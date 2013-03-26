@@ -1,3 +1,7 @@
+---
+layout: post
+title: Categories
+---
 Objective-C Categories
 
 Categories are an Objective-C feature that allow you to add methods to an already defined class--even one for which you don't have access to the source.
