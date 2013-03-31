@@ -1,0 +1,5 @@
+title: Max's Blog
+description: "A blog on iOS"
+permalink: /:title/
+lsi: false
+pygments: true
