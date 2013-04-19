@@ -6,72 +6,14 @@ Objective-C Categories
 
 Categories are an Objective-C feature that allow you to add methods to an already defined class--even one for which you don't have access to the source. Categories enable highly semantic, decomposable programming. Let's explore what categories can do.
 
-A recent login screen design I implemented called for a navigation bar button to push to a signup view controller. But in the case where the user got to the login page *from* signup, it needed to pop backwards to the signup controller. Here was my first approach:
-
-    
-    int controllersCount = self.navigationController.viewControllers.count;
-    if (controllersCount >= 2) {
-	    if ([[self.navigationController.viewControllers objectAtIndex:controllersCount-2] isKindOfClass:SignupViewController.class] {
-	        [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            // Custom transition method
-        }
-    } else {
-        // Custom transition method
-    }
-    
-
-
-This is my refactor using categories:
-    
-    
-    if ([self.previousViewController isKindOfClass:SignupViewController.class]) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        //Custom transition method
-    }
-    
-
-Much better. This code isn't prone to off-by-one errors, is more semantic, more concise, and doesn't instantiate any temporary variables. Here's the category backing it:
-    
-    
-    //
-    @interface UIViewController (NavigationStack)
-    @property (nonatomic, readonly) UIViewController *previousViewController;
-    @end
-    @implementation UIViewController (NavigationStack)
-    - (UIViewController *)previousViewController
-    {
-        return [self.navigationController viewControllerPreviousTo:self];
-    }
-    @end
-    
-    
-Which is in turn backed by this `UINavigationController` category:
-    
-    
-    - (UIViewController *)viewControllerPreviousTo:(UIViewController *)viewController
-    {
-        if (![self.viewControllers containsObject:viewController]) {
-            return nil;
-        } else if (self.rootViewController == viewController) {
-            return nil;
-        } else {
-            return self.viewControllers[[self.viewControllers indexOfObjectIdenticalTo:viewController]-1];
-        }
-    }
-    
-
-This code is documentable, testable, and reusable. It keeps logic about the navigation stack outside of a view controller subclass responsible for logging in users. 
-
 ###Cleaning up code
 
-Categories have the potential to massively clean up code, and do so in a way that makes testing easy. I was recently working on a data structure for a grouped table view that automatically inserts/deletes/replaces the rows of the table view. 
+Categories have the potential to massively clean up code, and do so in a way that makes testing easy. I was recently working on a data structure for a grouped table view that automatically inserts/deletes/replaces the rows of the table view; here's one method:
 
     - (void)addSections:(NSArray *)sections
     {
-        NSUInteger currentLastSection = [self.groupedStreamSections count];
-        [self.groupedStreamSections addObjectsFromArray:sections];
+        NSUInteger currentLastSection = [self.sectionObjects count];
+        [self.sectionObjects addObjectsFromArray:sections];
         [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(currentLastSection, [sections count])]
                       withRowAnimation:UITableViewRowAnimationAutomatic];
     }
@@ -86,12 +28,14 @@ An `NSMutableArray` category, `addObjectsFromArray:rangeOfNewObjects:` makes for
         [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:range]
                       withRowAnimation:rowAnimation];
     }
+    
+Categories are just the classic pattern of subroutines improving code: naming, comprehension, testability -- everything improves. Categories are perfectly suited to this task in an object-oriented language.
 
 
 
 ###Using categories to enable KVC
 
-I'm moving more of my logic into categories. I was recently refactoring this code, which took `NSString`s, made them into `NSURL`s, and passed them to a view for display:
+I was recently refactoring this code, which took `NSString`s, made them into `NSURL`s, and passed them to a view for display:
 
     
     NSMutableArray *iconUrls = [[NSMutableArray alloc] initWithCapacity:4];
@@ -118,14 +62,14 @@ I refactored this by adding `asURL` as a readonly property on NSString, with thi
     
     self.similar.urls = [games valueForKeyPath:@"iconURL.asURL"];
     
-Perfect. Combining categories with KVC, we have a one-liner that completely eliminates loops and explicit `NSNull`/`nil` checking. This is a bit of a cheat, as what I'm using the URLs for already supported `NSNull`. Still, I'd rather use this approach and add a `filterNSNull` category to `NSArray` than use the previous code.
+Perfect. Combining categories with KVC, we have a one-liner that completely eliminates loops and explicit `NSNull`/`nil` checking. This is a bit of a cheat, as what I was using the URLs for already supported `NSNull`. Still, I'd rather use this approach and add a `filterNSNull` category to `NSArray` than use the previous code.
 
 ###Readwrite properties in categories
 
 A notable drawback of categories is that they don't allow the programmer to add instance variables. However, by using the Objective-C runtime, you can simulate properties by writing the getter and setter logic using associated objects. This code, which adds a `tag` property to `PFObject`, was in answer to a question on Parse's help forums:
     
     
-    //
+
     @interface PFObject (Tag)
     @property (nonatomic) int tag;
     @end
@@ -154,7 +98,7 @@ A notable drawback of categories is that they don't allow the programmer to add 
 
 If you add a method in a category with the same name as a method in the original class, the category will override the class's method. If two categories implement a method with the same name, it's non-deterministic which will be used. The obnoxious ramification is that you'll either have to prefix your category methods (ugly) or risk a conflict.
 
-###Backporting methods with +load
+###Backporting methods with +load -- Code for this is long+boilerplate, move it to a gist.
 
 Category methods with the same name as a method in the class will override that method, while category methods themselves will be chosen 
 
@@ -164,9 +108,11 @@ The exception to the rule that categories override the class's methods is `+load
 
 
 // Something on answering SO questions with a category.
-// Something on how categories make naming easier
+// Something on how categories make naming easier -- check
 // Something on namespacing
 // Using +load to backport methods.
 // Something on 
+// For MXGroupedDataModel -- have first commit be previous way, and the next commit is with categories replacing the methods, and then use history browser to see side-by-side.
+// Uh, unrelated, but head/tail properties on NSIndexPath. 
 
 // Maybe show how I added the alignmentEdgeInsets property to UIImage, and then next show how I backported it?
