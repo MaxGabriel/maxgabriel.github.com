@@ -1,5 +1,10 @@
-title: Max's Blog
+title: at sign protocol
 description: "A blog on iOS"
 permalink: /:title/
 lsi: false
-pygments: true
+
+author :
+  name : Max Tagher
+  email : feedback.tagher@gmail.com
+  github : maxgabriel
+  twitter : MaxTagher
