@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Categories
+published: false
 ---
 Objective-C Categories
 
@@ -105,6 +106,10 @@ Category methods with the same name as a method in the class will override that 
 Category methods override their class's methods,
 
 The exception to the rule that categories override the class's methods is `+load`, [which is special cased](http://www.mikeash.com/pyblog/friday-qa-2009-05-22-objective-c-class-loading-and-initialization.html) to be invoked in the class *and* in every category on that class. In addition to swizzling, you can use this feature to backport methods
+
+// Using categories to enable UIStoryboardSegue unwinds
+    -- Useful for triggering back button in some other way, or whatever. 
+    -- Enables any generic action directly from storyboards -- doesn't have to be a segue.
 
 
 // Something on answering SO questions with a category.
