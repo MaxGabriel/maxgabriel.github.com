@@ -1,7 +1,6 @@
 ---
 layout: post
 title: The Effect of Non-Breaking Spaces on Typography
-published: false
 ---
 
 I recently read [*Butterick's Practical Typography*](http://practicaltypography.com/), which introduced  me to the concept of [non-breaking spaces](http://practicaltypography.com/nonbreaking-spaces.html).  
@@ -23,6 +22,12 @@ But using breaking spaces on a list of whitelisted words works well (does it?)
 // Effects on different browsers/screen sizes
 
 I'm not sure how much non-breaking spaces will improve my typography, but given the permutations of browsers and screen sizes, manually inserting non-breaking spaces is an unreliable fix. I wrote a small script to replace a list of whitelisted words with
+
+### Manual vs Scripted NBSP
+
+The value of running a script to apply NBSPs is dependent on your site layout. If your line length is constant If you have a fancy dynamic layout that changes as the o
+
+### OS X Service
 
 One way to use the script is as an OS X service. This will allow you to right click in any Cocoa application (unfortunately, not Sublime Text) and replace replace the spaces with non-breaking spaces in your whitelist.
 
