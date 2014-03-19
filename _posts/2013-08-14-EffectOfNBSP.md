@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Effect of Non-Breaking Spaces on Typography
+published: false
 ---
 
 I recently read [*Butterick's Practical Typography*](http://practicaltypography.com/), which introduced  me to the concept of [non-breaking spaces](http://practicaltypography.com/nonbreaking-spaces.html).  
