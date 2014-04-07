@@ -2,6 +2,7 @@ title: at sign protocol
 description: "A blog on iOS"
 permalink: /:title/
 lsi: false
+markdown: redcarpet
 
 author :
   name : Max Tagher
