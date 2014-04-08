@@ -150,7 +150,7 @@ html, body {
 
 body {
   background-color: white;
-  font: 17pt charterregular;
+  font: 16pt charterregular;
   /*font: 17pt Concourse T3;*/
   /*font font-family: Concourse T3;*/
   /*font: 16pt helvetica;*/
@@ -289,6 +289,12 @@ ul.posts {
 }
 
   /* standard */
+
+  #post blockquote {
+  	border-left: 4px solid #DDD;
+	padding: 0 15px;
+	color: #777;
+  }
 
   #post p {
     /*font-size: 110%;*/
