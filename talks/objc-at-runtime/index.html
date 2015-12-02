@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js – The HTML Presentation Framework</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="css/max.css">
+
+        <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+        <script type="text/javascript" src="js/snap.svg.js"></script>
+
+
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Calling Objective-C at Runtime</h1>
+                    <!-- <h3>Calling Objective-C at Runtime</h3> -->
+                    <p>
+                        <small>By <a href="https://github.com/MaxGabriel">Max Tagher</a> / <a href="http://twitter.com/maxtagher">@maxtagher</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Part I</h2>
+                        <h2>Why call Objective-C at runtime?</h2>
+                        <p class="fragment">In general you shouldn't</p>
+                            <!-- Static typing is your friend. -->
+                        <p class="fragment">Sometimes it's useful</p>
+                    </section>
+                    <section>
+                        <h2>Heyzap</h2>
+                    </section>
+                    <section data-transition="fade">
+                    <!-- $("svg #Line").attr("stroke-dasharray", "10,10") -->
+<svg class="sdk-arrows-diagram" width="631px" height="473px" viewBox="0 0 631 473" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch Beta 3.4.2 (15855) - http://www.bohemiancoding.com/sketch -->
+    <title>Slide</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Slide" sketch:type="MSArtboardGroup" transform="translate(-196.000000, -178.000000)">
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(708.000000, 178.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(708.000000, 260.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(708.000000, 342.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(708.000000, 424.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(708.000000, 506.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(708.000000, 591.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="APP" sketch:type="MSLayerGroup" transform="translate(196.000000, 312.000000)">
+                <path d="M62.7555,0 L117.2445,0 C135.315,0 144.348,0 154.0755,3.075 C164.6955,6.9405 173.0595,15.3045 176.925,25.9245 C180,35.6505 180,44.6865 180,62.7555 L180,117.2445 C180,135.315 180,144.348 176.925,154.0755 C173.0595,164.6955 164.6955,173.0595 154.0755,176.9235 C144.348,180 135.315,180 117.2445,180 L62.7555,180 C44.685,180 35.6505,180 25.9245,176.9235 C15.3045,173.0595 6.9405,164.6955 3.075,154.0755 C0,144.348 0,135.315 0,117.2445 L0,62.7555 C0,44.6865 0,35.6505 3.075,25.9245 C6.9405,15.3045 15.3045,6.9405 25.9245,3.075 C35.6505,0 44.685,0 62.7555,0 L62.7555,0" id="Icon-Shape" fill="#9250CE" sketch:type="MSShapeGroup"></path>
+                <text sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="48" font-weight="206" sketch:alignment="middle" fill="#FFFFFF">
+                    <tspan x="48.648" y="103">APP</tspan>
+                </text>
+            </g>
+            <path d="M381.5,402 L699.5,208" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M699.5,208 L688.717864,211.063583 L691.842654,216.185661 L699.5,208 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path d="M381.5,402 L699.5,290" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M699.5,290 L688.316743,290.758127 L690.309939,296.417382 L699.5,290 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path d="M381.5,402 L699.5,454" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M699.5,454 L689.325696,449.296433 L688.357424,455.217788 L699.5,454 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path d="M381.5,402 L699.5,536" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M699.5,536 L690.712465,529.041608 L688.382568,534.570765 L699.5,536 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path d="M381.5,402 L699.5,621" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M699.5,621 L692.306811,612.403603 L688.903682,617.345133 L699.5,621 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path d="M381.5,402 L699.5,372" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M699.5,372 L688.465974,370.027626 L689.029509,376.001103 L699.5,372 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>
+<!-- <span class="fragment" id="after-svg"></span> -->
+                        <!-- A product I work on is called ad network mediation -->
+                        <!-- There are a bunch of different ad networks  -->
+                        <!-- Game developers want to use several of them, but not all of them -->
+                        <!-- We make one interface they interact with -->
+                    </section>
+                    <section data-transition="fade">
+<svg class="sdk-arrows-diagram" width="907px" height="473px" viewBox="0 0 907 473" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch Beta 3.4.2 (15855) - http://www.bohemiancoding.com/sketch -->
+    <title>Slide</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Slide" sketch:type="MSArtboardGroup" transform="translate(-33.000000, -178.000000)">
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(821.000000, 178.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(821.000000, 260.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(821.000000, 342.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(821.000000, 424.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(821.000000, 506.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(821.000000, 591.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <g id="APP" sketch:type="MSLayerGroup" transform="translate(33.000000, 312.000000)">
+                <path d="M62.7555,0 L117.2445,0 C135.315,0 144.348,0 154.0755,3.075 C164.6955,6.9405 173.0595,15.3045 176.925,25.9245 C180,35.6505 180,44.6865 180,62.7555 L180,117.2445 C180,135.315 180,144.348 176.925,154.0755 C173.0595,164.6955 164.6955,173.0595 154.0755,176.9235 C144.348,180 135.315,180 117.2445,180 L62.7555,180 C44.685,180 35.6505,180 25.9245,176.9235 C15.3045,173.0595 6.9405,164.6955 3.075,154.0755 C0,144.348 0,135.315 0,117.2445 L0,62.7555 C0,44.6865 0,35.6505 3.075,25.9245 C6.9405,15.3045 15.3045,6.9405 25.9245,3.075 C35.6505,0 44.685,0 62.7555,0 L62.7555,0" id="Icon-Shape" fill="#9250CE" sketch:type="MSShapeGroup"></path>
+                <text sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="48" font-weight="206" sketch:alignment="middle" fill="#FFFFFF">
+                    <tspan x="48.648" y="103">APP</tspan>
+                </text>
+            </g>
+            <path stroke-dasharray="10,10" d="M494.5,402 L812.5,208" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M812.5,208 L801.717864,211.063583 L804.842654,216.185661 L812.5,208 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path stroke-dasharray="10,10" d="M494.5,402 L812.5,290" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M812.5,290 L801.316743,290.758127 L803.309939,296.417382 L812.5,290 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path stroke-dasharray="10,10" d="M494.5,402 L812.5,454" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M812.5,454 L802.325696,449.296433 L801.357424,455.217788 L812.5,454 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path stroke-dasharray="10,10" d="M494.5,402 L812.5,536" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M812.5,536 L803.712465,529.041608 L801.382568,534.570765 L812.5,536 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path stroke-dasharray="10,10" d="M494.5,402 L812.5,621" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M812.5,621 L805.306811,612.403603 L801.903682,617.345133 L812.5,621 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <path stroke-dasharray="10,10" d="M494.5,402 L812.5,372" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M812.5,372 L801.465974,370.027626 L802.029509,376.001103 L812.5,372 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+            <g id="SDK-Box" sketch:type="MSLayerGroup" transform="translate(365.000000, 372.000000)">
+                <rect id="Rectangle-1" fill="#4990E2" sketch:type="MSShapeGroup" x="2" y="0" width="117" height="60"></rect>
+                <text id="SDK" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="30" font-weight="206" sketch:alignment="middle">
+                    <tspan x="31.72" y="41">SDK</tspan>
+                </text>
+            </g>
+            <path d="M229.5,402.5 L357.5,402.5" id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M357.5,402.5 L346.7,399.5 L346.7,405.5 L357.5,402.5 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>
+                    </section>
+
+                    <section>
+                        <h3>Can't Statically Reference</h3>
+                        <ul>
+                            <li><code>[VungleSdk playAd]</code> in your SDK</li>
+                            <li><code>VungleSdk</code> must be included in final app</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Other Use Cases</h2>
+                        <ul>
+                            <li>SDK that uses another SDK, if present</li>
+                                <ul class="fragment">
+                                    <li>If Crashlytics or Bugsnag is present, track an exception</li>
+                                    <li>If Mixpanel is present, track analytics</li>
+                                </ul>
+                            <li class="fragment">SDK ready to use iOS 10 features before Xcode 8 is out.</li>
+                            <li class="fragment">Calling private APIs</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Part II</h2>
+                        <h2>First Approach</h2>
+
+                        <ul>
+                            <li><code>NSClassFromString</code></li>
+                            <li><code>performSelector:</code></li>
+                                <ul class="fragment">
+                                    <li>A Selector is a message sent to an object</li>
+                                    <li>Typically the name of a method to call</li>
+                                    <li>Selectors are C strings you can compare with pointer equality</li>
+                                </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+<pre><code class="hljs objc" data-trim>
+Class class = NSClassFromString(@"Chartboost");
+[class performSelector:@selector(showInterstitial:) 
+            withObject:@""];
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Warnings</h2>
+                        <div>
+                            <ul>
+                                <li class=><code>@selector(foo)</code></li>
+                                <li class=><code>Undeclared selector 'foo'</code></li>
+                                
+                                    <!-- If you consult fuckingclangwarnings.com... -->
+                            </ul>
+                         </div>
+<div class="fragment">
+<span>(Ignore with <code>-Wundeclared-selector</code>)</span>
+<pre><code class="hljs objc">#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    // code here
+#pragma clang diagnostic pop</code></pre>
+</div>
+                    </section>
+
+                    <section>
+                        <h2>Downsides</h2>
+
+                        <ul>
+                            <li class="fragment">Can't pass multiple arguments</li>
+                            <li class="fragment">Can't use primitives (<code>int</code>, <code>BOOL</code>)</li>
+                            <li class="fragment">Need to use <code>NSInvocation</code></li>
+                        </ul>
+
+                    </section>
+
+                    <section>
+                    <h2>NSInvocation</h2>
+                    <!-- TODO: This code snippet is too big for the screen. -->
+                    <!-- NOTE: 14 lines for one method call. -->
+<pre><code class="hljs objc" data-noescape data-trim>
+Class class = <span id="nsinvocation-1" class="code-callout">NSClassFromString(@"AdColony")</span>;
+<span id="nsinvocation-2">NSMethodSignature *signature = [class methodSignatureForSelector:
+                                @selector(configureWithAppID:zoneIDs:delegate:logging:)</span>];
+NSInvocation *invocation = <span id="nsinvocation-3">[NSInvocation invocationWithMethodSignature:</span>signature];
+[invocation <span id="nsinvocation-4">setTarget:class</span>];
+[invocation <span id="nsinvocation-5">setSelector:@selector(configureWithAppID:zoneIDs:delegate:logging:)</span>];
+
+NSString *appID = @"";
+NSArray *zoneIDs = @[];
+id delegate = nil;
+BOOL logging = YES;
+[invocation <span id="nsinvocation-6">setArgument:&amp;appID</span> <span id="nsinvocation-7">atIndex:2</span>];
+[invocation setArgument:&amp;zoneIDs atIndex:3];
+[invocation setArgument:&amp;delegate atIndex:4];
+[invocation setArgument:&amp;logging atIndex:5];
+
+[invocation <span id="nsinvocation-8">invoke</span>];
+</code></pre>
+
+<span hidden class="fragment" data-proxy-current="nsinvocation-1" data-proxy-next="nsinvocation-2"></span>
+<span hidden class="fragment" data-proxy-current="nsinvocation-2" data-proxy-next="nsinvocation-3"></span>
+<span hidden class="fragment" data-proxy-current="nsinvocation-3" data-proxy-next="nsinvocation-4"></span>
+<span hidden class="fragment" data-proxy-current="nsinvocation-4" data-proxy-next="nsinvocation-5"></span>
+<span hidden class="fragment" data-proxy-current="nsinvocation-5" data-proxy-next="nsinvocation-6"></span>
+<span hidden class="fragment" data-proxy-current="nsinvocation-6" data-proxy-next="nsinvocation-7"></span>
+<span hidden class="fragment" data-proxy-current="nsinvocation-7" data-proxy-next="nsinvocation-8"></span>
+                    </section>
+
+                    <section>
+                        <h2>Dynamic Typing</h2>
+<pre><code class="hljs objc" id="dynamic-typing-example" data-noescape data-trim>
+Class class = <span class="dyn-typing">NSClassFromString(@"AdColony")</span>;
+NSMethodSignature *signature = [class methodSignatureForSelector:
+                                <span class="dyn-typing">@selector(configureWithAppID:zoneIDs:delegate:logging:)</span>];
+NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+[invocation <span class="dyn-typing">setTarget:class</span>];
+[invocation <span class="dyn-typing">setSelector:@selector(configureWithAppID:zoneIDs:delegate:logging:)</span>];
+&nbsp;
+NSString *appID = @"";
+NSArray *zoneIDs = @[];
+id delegate = nil;
+BOOL logging = YES;
+[invocation <span class="dyn-typing">setArgument:&amp;appID</span> <span class="dyn-typing">atIndex:2</span>];
+[invocation <span class="dyn-typing">setArgument:&amp;zoneIDs</span> <span class="dyn-typing">atIndex:3</span>];
+[invocation <span class="dyn-typing">setArgument:&amp;delegate</span> <span class="dyn-typing">atIndex:4</span>];
+[invocation <span class="dyn-typing">setArgument:&amp;logging</span> <span class="dyn-typing">atIndex:5</span>];
+&nbsp;
+[invocation invoke];
+NSString *returnValue;
+[invocation <span class="dyn-typing">getReturnValue:&amp;returnValue</span>];
+</code></pre>
+                        <!-- No protection against typos, no autocomplete -->
+                                    <!-- If there was ever a language that needed autocomplete... -->
+                                <!-- Illustration of what lines are prone to errors (almost all of them) -->
+                    </section>
+
+                    <section>
+                        <h2>Ugly</h2>
+                    </section>
+                    <section>
+                        <h2>Long (17 lines)</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Part III</h2>
+                        <h2>NSObject Subclass</h2>
+                            <ul>
+                                <li>Create a dummy class with the same methods</li>
+                                <li class="fragment">Load real <code>Class</code> with <code>NSClassFromString</code></li>
+                                <li class="fragment">But make the compiler think we're using the dummy class</li>
+                            </ul>
+                    </section>
+
+                <section>
+                <h3>Dummy Class Interface</h3>
+<pre><code class="hljs objc" data-noescape data-trim>
+<span class="code-callout">@interface HZAdColony : NSObject</span>
+
++ (void)configureWithAppID:(NSString *)appID
+                   zoneIDs:(NSArray *)zoneIDs
+                  delegate:(id)delegate
+                   logging:(BOOL)log;
+
++ (int)zoneStatusForZone:(NSString *)zoneID;
+
++ (void)playVideoAdForZone:(NSString *)zoneID
+              withDelegate:(id)delegate
+          withV4VCPrePopup:(BOOL)showPrePopup
+          andV4VCPostPopup:(BOOL)showPostPopup;
+
+@end</code></pre>
+                </section>
+                <section>
+                <h3>Dummy Class Implementation</h3>
+<pre><code class="hljs objc">#pragma clang diagnostic ignored "-Wincomplete-implementation"
+@implementation HZAdColony
+@end</code></pre>
+                </section>
+
+                <!-- TODO: This should have an instance method example that uses casting -->
+
+                <section>
+                    <h3>Instance Methods</h3>
+<pre><code class="hljs objc" data-trim>
+Class c = NSClassFromString(@"AdColony");
+HZAdColony *instance = [[c alloc] init];
+[instance foo];
+</code></pre>     
+                </section>
+                
+                <section>
+                <h3>Class Methods</h3>
+<pre><code class="hljs objc">Class c = NSClassFromString(@"AdColony");
+[c playVideoAdForZone:@""
+         withDelegate:self
+     withV4VCPrePopup:NO
+     andV4VCPostPopup:NO];</code></pre>
+                </section>
+                <section>
+                    <h3>Downsides</h3>
+                    <ul>
+                        <li>Lose static typing for class methods</li>
+                        <li class="fragment">Lose autocomplete for class methods</li>
+                        <ul>
+                            <li class="fragment">Dealbreaker</li>
+                        </ul>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="video-without-autocomplete-duration"></h2>
+                    <video id="video-without-autocomplete" data-autoplay data-src="videos/withoutAutocomplete.mp4"></video>
+                </section>
+
+                <!-- Create a dummy class, cast to it. -->
+                <!-- This is pretty good. The main downside is that we can't call class methods safely -->
+                <!-- Need to use NSClassFromString -->
+                <!-- Also you lose autocomplete for class methods. This turns out to be ridiculously important for Objective-C -->
+                <!-- Many/Most SDKSs use class methods instead of instances. -->
+
+                <!-- This is the language that brought you: -->
+                <!-- outputImageProviderFromBufferWithPixelFormat:pixelsWide:pixelsHigh:baseAddress:bytesPerRow:releaseCallback:releaseContext:colorSpace:shouldColorMatch: -->
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Part IV</h2>
+                        <!-- TODO forwardingTargetForSelector: puts the colon on a separate line -->
+                     <!-- Here's what I came up with -->
+                        <h2>forwardingTargetForSelector:</h2>
+                        <h2>and NSProxy</h2>
+                        
+                    </section>
+                    <section>
+                        <h3>What happens when an object receives a message?</h3>
+
+                        <a href="https://mikeash.com/pyblog/friday-qa-2009-03-20-objective-c-messaging.html">From Mike Ash's Blog</a>
+                        
+                        <ol>
+                            <li><code>int result = [obj foo:@"hello"];</code></li>
+                            <li class="fragment">int result = ((int (*)(id, SEL, NSString *))objc_msgSend)(obj, @selector(foo:), @"hello");</li>
+                            <li class="fragment"><code>objc_msgSend</code> searches class hierarchy for method implementation</li>
+                            <li class="fragment">If found, the implementation (function pointer) is cached</li>
+                            <li class="fragment">If found, jump to the function pointer</li>
+                        </ol>
+                        
+                    </section>
+                    <section>
+                        <h3>The method is not implemented</h3>
+
+                        <a href="https://mikeash.com/pyblog/friday-qa-2009-03-27-objective-c-message-forwarding.html">From Mike Ash's Blog</a>
+
+                        <ol id="forwarding-methods">
+                            <li class="fragment"><code>resolveInstanceMethod:</code>/<code>resolveClassMethod:</code></li>
+                            <li id="forwarding-target-for-selector" class="fragment"><code>forwardingTargetForSelector:</code></li>
+                            <li class="fragment"><code>methodSignatureForSelector:</code> &amp; <code>forwardInvocation:</code></li>
+                            <li class="fragment"><code>doesNotRecognizeSelector:</code></li>
+                        </ol>
+
+                        <span hidden id="forwarding-target-slide" class="fragment" ></span>
+
+                    </section>
+
+                    <section>
+                        <h2>NSProxy</h2>
+                        <ul>
+                            <li><code>NSProxy</code> does not inherit from <code>NSObject</code>
+                                <ul>
+                                    <li><code>init</code>, <code>copy</code></li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Does conform to the <code>NSObject</code> protocol
+                                <ul>
+                                    <li><code>class</code>, <code>isEqual:</code>, <code>hash</code></li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Because <code>NSProxy</code> doesn't implement many methods, it works well with <code>forwardingTargetForSelector:</code></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>The Plan</h3>
+                        <p>Make a subclass of <code>NSProxy</code>, then forward messages to the real class with <code>NSClassFromString</code></p>
+                    </section>
+
+                    <section>
+<pre><code class="hljs objc" data-noescape data-trim>
+@interface HZAdColony : <span class="code-callout">NSProxy</span>
+
++ (void)playVideoAdForZone:(NSString *)zoneID
+              withDelegate:(id)delegate
+          withV4VCPrePopup:(BOOL)showPrePopup
+          andV4VCPostPopup:(BOOL)showPostPopup;
+
+@end</code></pre>
+                    </section>
+
+                    <section>
+                    <!-- Mention forwarding target for selector is an instance and class method. -->
+<pre><code class="hljs objc">#pragma clang diagnostic ignored "-Wincomplete-implementation"
+@implementation HZAdColony
+
+// Forward class methods
++ (id)forwardingTargetForSelector:(SEL)aSelector
+{
+    return NSClassFromString(@"AdColony");
+}
+
+@end</code></pre>
+                    </section>
+
+                    <section>
+<pre><code class="hljs objc" data-trim>
+[HZAdColony playVideoAdForZone:@""
+                  withDelegate:self
+              withV4VCPrePopup:NO
+              andV4VCPostPopup:NO];
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h3 id="video-with-autocomplete-duration"></h3>
+                        <video id="video-with-autocomplete" data-autoplay data-src="videos/withAutocomplete.mp4"></video>
+                    </section>
+
+                    <section>
+                        <h2>Benefits</h2>
+
+                        <ul>
+                            <li>Static typing</li>
+                            <li>Readable code</li>
+                            <li>Autocomplete</li>
+                        </ul>
+                    </section>
+
+                    <!-- Fewer lines of code than NSInvocation version -->
+
+                    <!-- Not sure if these warnings are in the right spot. -->
+                    <section>
+                        <h2>Warnings</h2>
+                        <ul>
+                            <li><code>NSProxy</code> implements some methods (e.g. <code>alloc</code>, <code>hash</code>)</li>
+                                <ul class="fragment">
+                                    <li>Override and manually forward</li>
+                                    <li>Use a custom proxy class like <a href="https://github.com/mikeash/MAFuture/blob/master/MAProxy.m">MAProxy</a></li>
+                                </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <!-- This could maybe be moved to an appendix. -->
+                        <h2>Warnings</h2>
+                        <ul>
+                            <li>If a library isn't referenced, its code won't be included in the app</li>
+                                <ul class="fragment">
+                                    <li>Have developers add <code>-ObjC to Other Linker Flags</code></li>
+                                    <li>Static libraries can check this by seeing if category methods are available.</code></li>
+                                </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                    <!-- This could maybe be moved to an appendix. -->
+                        <h2>HZClassProxy</h2>
+<pre><code class="hljs objc">@interface HZClassProxy : NSProxy
+
+// Abstract
++ (NSString *)hzProxiedClassName;
+
++ (BOOL)hzProxiedClassIsAvailable;
+
+@end</code></pre>
+                    </section>
+
+                    <section>
+<pre><code class="hljs objc">@implementation HZClassProxy
+
++ (NSString *)hzProxiedClassName {
+    @throw [NSException exceptionWithName:@"AbstractMethodException"
+                             reason:@"Subclasses should override this method"
+                                 userInfo:nil];
+}
+
++ (BOOL)hzProxiedClassIsAvailable {
+    return NSClassFromString([self hzProxiedClassName]) != nil;
+}
+
++ (id)forwardingTargetForSelector:(SEL)aSelector {
+    return NSClassFromString([self hzProxiedClassName]);
+}</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Properties</h2>
+                        <ul>
+                            <li>Add properties in the proxy class's header file</li>
+                            <!-- <li>Declare as <code>@dynamic</code> in implementation</li> -->
+                        </ul>
+                    </section>
+                    
+                    <!-- class' vs class's ? -->
+                    <!-- TODO: check if this is necessary. -->
+                    <section>
+<pre><code class="hljs objc">@interface HZGADNativeContentAd : HZClassProxy
+
+@property (nonatomic, readonly, copy) NSString *headline;
+@property (nonatomic, readonly, copy) NSString *body;
+
+@end</code></pre>
+                    </section>
+                    <!-- Not actually necessary b/c we never create real instances of this. -->
+                    <!-- Maybe appendix material -->
+                    <!-- <section>
+
+<pre><code class="hljs objc">@implementation HZGADNativeContentAd
+
+@dynamic headline;
+@dynamic body;
+
+@end</code></pre>
+                    </section> -->
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Protocols</h2>
+                        <ul><li>Make your own namespaced protocol with the same methods</li></ul>
+                    </section>
+                    <section>
+<pre><code class="hljs objc">@protocol HZAdColonyAdDelegate &lt;NSObject&gt;
+@optional
+
+- (void)onAdColonyAdStartedInZone:(NSString *)zoneID;
+
+- (void)onAdColonyAdAttemptFinished:(BOOL)shown
+                             inZone:(NSString *)zoneID;
+
+@end</code></pre>
+                    </section>
+                    <section>
+                        <p>Override <code>conformsToProtocol:</code></p>
+<!-- NOTE: Most of the time this is unnecessary because people prefer respondsToSelector: -->
+<pre><code class="hljs objc">- (BOOL)conformsToProtocol:(Protocol *)aProtocol
+{
+    if (NSProtocolFromString(@"AdColonyAdDelegate") == aProtocol) {
+        return YES;
+    } else {
+        return [super conformsToProtocol:aProtocol];
+    }
+}</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Constants</h2>
+                        <ul>
+                            <li>Use <code>CFBundleGetDataPointerForName</code></li>
+                        </ul>
+                        <!-- Can get all bundles with CFBundleGetAllBundles() -->
+                        <!-- Code for this is open source -->
+                        <!-- Calls dlsym under the hood. -->
+                    </section>
+                    <section>
+                    <h3>Example: Struct at Runtime</h3>
+<pre><code class="hljs objc" data-noescape data-trim>
+// Lookup this
+typedef struct FBAdSize {
+  CGSize size;
+} FBAdSize;
+
+extern FBAdSize const <span id="cf-bundle-1">kFBAdSizeHeight50Banner</span>;
+</code></pre>
+
+<pre><code class="hljs objc" data-noescape data-trim>
+// Using this
+void *<span id="cf-bundle-2">CFBundleGetDataPointerForName</span>(<span id="cf-bundle-3">CFBundleRef bundle</span>, CFStringRef symbolName);
+</code></pre>
+
+<pre><code class="hljs objc" data-noescape data-trim>
+// Example
+HZFBAdSize <span id="cf-bundle-6">*adSize</span> = CFBundleGetDataPointerForName(<span id="cf-bundle-4">CFBundleGetMainBundle()</span>,
+                                                   <span id="cf-bundle-5">CFSTR("kFBAdSizeHeight50Banner")</span>);
+if (adSize) {
+    return <span id="cf-bundle-7">*adSize</span>;
+}
+</code></pre>
+<span hidden class="fragment" data-proxy-next="cf-bundle-1"></span>
+<span hidden class="fragment" data-proxy-current="cf-bundle-1" data-proxy-next="cf-bundle-2"></span>
+<span hidden class="fragment" data-proxy-current="cf-bundle-2" data-proxy-next="cf-bundle-3"></span>
+<span hidden class="fragment" data-proxy-current="cf-bundle-3" data-proxy-next="cf-bundle-4"></span>
+<span hidden class="fragment" data-proxy-current="cf-bundle-4" data-proxy-next="cf-bundle-5"></span>
+<span hidden class="fragment" data-proxy-current="cf-bundle-5" data-proxy-next="cf-bundle-6"></span>
+<span hidden class="fragment" data-proxy-current="cf-bundle-6" data-proxy-next="cf-bundle-7"></span>
+                    </section>
+
+                    <section>
+                    <ul>
+                        <li><code>CFBundleGetDataPointerForName</code> is <a href="https://github.com/opensource-apple/CF/blob/3cc41a76b1491f50813e28a4ec09954ffa359e6f/CFBundle_Binary.c#L847-L876">open source</a></li>
+                    </ul>
+                    </section>
+
+                    <section>
+<!-- TODO: this code doesn't fit on one slide. -->
+<pre><code class="hljs objc" data-noescape data-trim>
+void *CFBundleGetDataPointerForName(CFBundleRef bundle, CFStringRef symbolName) {
+    void *dp = NULL;
+    // Load if necessary
+    if (!bundle->_isLoaded &amp;&amp; !CFBundleLoadExecutable(bundle)) return NULL;
+    
+    switch (bundle->_binaryType) {
+#if defined(BINARY_SUPPORT_DYLD)
+        case __CFBundleDYLDBundleBinary:
+        case __CFBundleDYLDFrameworkBinary:
+        case __CFBundleDYLDExecutableBinary:
+#if defined(BINARY_SUPPORT_DLFCN)
+            if (bundle->_handleCookie) 
+                dp = <span class="code-callout">_CFBundleDlfcnGetSymbolByName</span>(bundle, symbolName);
+#else /* BINARY_SUPPORT_DLFCN */
+            dp = _CFBundleDYLDGetSymbolByName(bundle, symbolName);
+#endif /* BINARY_SUPPORT_DLFCN */
+            break;
+#endif /* BINARY_SUPPORT_DYLD */
+#if defined(BINARY_SUPPORT_DLL)
+        case __CFBundleDLLBinary:
+            /* MF:!!! Handle this someday */
+            break;
+#endif /* BINARY_SUPPORT_DLL */
+        default:
+#if defined(BINARY_SUPPORT_DLFCN)
+            if (bundle->_handleCookie) 
+                dp = <span class="code-callout">_CFBundleDlfcnGetSymbolByName</span>(bundle, symbolName);
+#endif /* BINARY_SUPPORT_DLFCN */
+            break;
+    }
+    return dp;
+}</code></pre>
+                    </section>
+
+                    <section>
+<pre><code class="hljs objc" data-noescape data-trim>
+CF_PRIVATE void *<span id="cf-internal-1" class="code-callout">_CFBundleDlfcnGetSymbolByName</span>(CFBundleRef bundle,
+                                               CFStringRef symbolName) {
+    return <span id="cf-internal-2">_CFBundleDlfcnGetSymbolByNameWithSearch</span>(bundle, 
+                                                   symbolName, false);
+}
+
+static void *_CFBundleDlfcnGetSymbolByNameWithSearch(CFBundleRef bundle,
+                                                     CFStringRef symbolName,
+                                                     Boolean globalSearch) {
+    void *result = NULL;
+    char buff[1026];
+    
+    if (CFStringGetCString(symbolName, buff, 1024, kCFStringEncodingUTF8)) {
+        result = <span id="cf-internal-3">dlsym</span>(bundle->_handleCookie, buff);
+        if (!result &amp;&amp; globalSearch) result = dlsym(RTLD_DEFAULT, buff);
+#if defined(DEBUG)
+        if (!result) CFLog(__kCFLogBundle,
+                           CFSTR("dlsym cannot find symbol %@ in %@"),
+                           symbolName, bundle);
+#endif /* DEBUG */
+#if LOG_BUNDLE_LOAD
+        printf("bundle %p handle %p module %p image %p dlsym returns symbol %p for %s\n", bundle, bundle->_handleCookie, bundle->_moduleCookie, bundle->_imageCookie, result, buff);
+#endif /* LOG_BUNDLE_LOAD */
+    }
+    return result;
+}
+<span hidden class="fragment" data-proxy-current="cf-internal-1" data-proxy-next="cf-internal-2"></span>
+<span hidden class="fragment" data-proxy-current="cf-internal-2" data-proxy-next="cf-internal-3"></span>
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h3>dlsym</h3>
+
+                        <ul>
+                            <li>Loads a symbol at runtime</li>
+                            <li>Part of the POSIX standard</li>
+                            <li>Used by libraries KIF to load AppSupport.framework</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+<pre><code class="hljs objc" data-noescape data-trim>
+extern void * dlsym(<span id="dlsym-1" class="code-callout">void * __handle</span>, const char * __symbol);
+</code></pre>
+
+<pre><code class="hljs objc" data-noescape data-trim>
+HZFBAdSize <span id="dlsym-3">*structPointer</span> = dlsym(<span id="dlsym-2">RTLD_DEFAULT</span>, "kFBAdSizeHeight50Banner");
+if (structPointer) {
+    return  <span id="dlsym-4">*structPointer</span>;
+} else {
+    // Error case, return hard-coded value.
+    return  (HZFBAdSize){ CGSizeMake(-1, 50) };
+}
+</code></pre>
+<span hidden class="fragment" data-proxy-current="dlsym-1" data-proxy-next="dlsym-2"></span>
+<span hidden class="fragment" data-proxy-current="dlsym-2" data-proxy-next="dlsym-3"></span>
+<span hidden class="fragment" data-proxy-current="dlsym-3" data-proxy-next="dlsym-4"></span>
+                    </section>
+                    
+                    <section>
+                        <h3>Caveats</h3>
+                        <ul>
+                            <li>I have experienced weirdness with this function</li>
+                            <li class="fragment">Default Compiler Optimization Level
+                                <ul>
+                                    <li>Development: <code>-O0</code></li>
+                                    <li>Release: <code>-Os</code></li>
+                                    <li class="fragment">At -Os compiler optimization, constants not statically referenced were compiled out of the binary</li>
+                                    <li class="fragment">Can no longer reproduce this</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>More Caveats</h3>
+                        <ul>
+                            <li class="fragment">This function never works on Adobe Air games</li>
+                            <li class="fragment">At one point this function was not working for Google AdMob's SDK</li>
+                            <li class="fragment">Recommendation: Have a fallback to a hard-coded value</li>
+                        </ul>
+                    </section>
+                    
+                </section>
+                <section>
+                    <h2>C Functions</h2>
+                    <p>Use <code>CFBundleGetFunctionPointerForName</code></p>
+                </section>
+                <section>
+                    <section>
+                        <h3>Creating classes at runtime</h3>
+                        <ul>
+                            <li class="fragment">Create classes, add methods, properties, instance variables, protocols etc. at runtime</li>
+                            <li class="fragment">This is a topic all on its own
+                                <ul>
+                                    <li>Check out Mike Ash's <a href="https://www.mikeash.com/pyblog/friday-qa-2010-11-6-creating-classes-at-runtime-in-objective-c.html">blog posts</a> for more details</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                    <h3>Example: Subclassing AdMob View</h3>
+                    <ul>
+                        <li class="fragment"><code>GADNativeAppInstallAdView</code> is a subclass of <code>UIView</code></li>
+                        <li class="fragment">I need to know when it's added to the window</li>
+                        <li class="fragment">Subclass and override <code>didMoveToWindow</code></li>
+                    </ul>
+                    
+                    </section>
+
+                    <section>
+<pre><code id="bam" class="hljs objc" data-noescape data-trim>
+<span id="create-class-1" class="code-callout">Class wrapperSuperClass = NSClassFromString(@"GADNativeAppInstallAdView");</span>
+<span id="create-class-2">Class subclass = objc_allocateClassPair(wrapperSuperClass, 
+                                        "HZGADNativeAppInstallAdView", 0);</span>
+
+<span id="create-class-3">class_addIvar(subclass, "_heyzapDelegate",</span>
+              sizeof(id), rint(log2(sizeof(id))), @encode(id));
+
+<span id="create-class-4">IMP imp = imp_implementationWithBlock(^(id theSelf)</span>{
+    struct objc_super super_data = { theSelf, wrapperSuperClass };
+    <span id="create-class-5">objc_msgSendSuper(&amp;super_data, @selector(didMoveToWindow));</span>
+    
+    Ivar ivar = class_getInstanceVariable([theSelf class], "_heyzapDelegate");
+    <span id="create-class-6">id delegate = object_getIvar(theSelf, ivar);</span>
+    
+    <span id="create-class-7">[delegate performSelector:@selector(admobWrapperMovedToWindow)];</span>
+});
+
+<span id="create-class-8">class_addMethod(subclass, @selector(didMoveToWindow), imp, "v@");</span>
+
+<span id="create-class-9">objc_registerClassPair(subclass);</span>
+</code></pre>
+<span hidden class="fragment" data-proxy-current="create-class-1" data-proxy-next="create-class-2"></span>
+<span hidden class="fragment" data-proxy-current="create-class-2" data-proxy-next="create-class-3"></span>
+<span hidden class="fragment" data-proxy-current="create-class-3" data-proxy-next="create-class-4"></span>
+<span hidden class="fragment" data-proxy-current="create-class-4" data-proxy-next="create-class-5"></span>
+<span hidden class="fragment" data-proxy-current="create-class-5" data-proxy-next="create-class-6"></span>
+<span hidden class="fragment" data-proxy-current="create-class-6" data-proxy-next="create-class-7"></span>
+<span hidden class="fragment" data-proxy-current="create-class-7" data-proxy-next="create-class-8"></span>
+<span hidden class="fragment" data-proxy-current="create-class-8" data-proxy-next="create-class-9"></span>
+
+                    </section>
+                </section>
+
+                <!-- No solution for these: -->
+                <section>
+                    <h2>Enums</h2>
+                    <ul class="fragment">
+                        <li>Enums are a purely compile-time construct</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Preprocessor Macros</h2>
+                    <ul>
+                        <li class="fragment">Preprocessor macros are a purely compile-time construct</li>
+                        <li class="fragment">Prefer constants instead—they can be documented.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+        <script type="text/javascript" src="js/max.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                // TODO investigate these values 
+                width: 1152,
+                height: 840,
+                margin: 0.05,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    // { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+                    // { src: 'plugin/notes-server/client.js', async: true },
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { 
+                        $('pre code.hljs').each(function(i, block) {
+                            hljs.highlightBlock(block);
+                        });
+                        // var color = "#3f3f3f";
+
+                        addCodeCallout($(".code-callout"));
+
+                        // $('.code-callout').css("color", color);
+                        // $('.code-callout').find("*").css("color", color);
+                        // $('.code-callout').css("font-weight", "600");
+                        // $('.code-callout').find("*").css("font-weight", "600");
+
+                        // $('.dyn-typing').css("color", color);
+                        // $('.dyn-typing').children().css("color", color);
+
+                        // each(function(i, span) {
+                        //     span.css("color", "white");
+                        // });
+                    }}, 
+
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>

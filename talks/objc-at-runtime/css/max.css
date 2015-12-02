@@ -1,0 +1,53 @@
+.sdk-arrows-diagram {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+
+#dynamic-typing-example {
+    font-size: 20px;
+    text-align: left;
+}
+
+.dyn-typing {
+    background-color: #BF2323;
+
+    display: inline-block;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+/*#code-highlight {
+    background-color: yellow;
+    border-radius: 3;
+}*/
+
+.code-callout {
+    display: inline-block;
+    /*padding: 3px;*/
+    /*line-height: 100%;*/
+
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+    /*background-color: yellow;*/
+    background-color: rgb(254, 255, 3);
+    /*color: white;*/
+    /*color: white !important;*/
+    /*text-align: center;*/
+    /*font-size: 2em;*/
+    font-weight: 600;
+}
+
+#forwarding-methods .dimmed {
+    opacity: 0.2;
+}
+
+.reveal pre code {
+    max-height: 800px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*#dcdcdc*/
+/*#3f3f3f*/
