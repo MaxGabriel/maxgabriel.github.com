@@ -53,11 +53,11 @@ import qualified Database.Redis as R
 
 data App = App
     { appSettings    :: AppSettings
-    , appStatic      :: Static -- ^ Settings for static file serving.
-    , appConnPool    :: ConnectionPool -- ^ Database connection pool.
+    , appStatic      :: Static
+    , appConnPool    :: ConnectionPool
     , appHttpManager :: Manager
     , appLogger      :: Logger
-    , appRedisPool   :: R.Connection
+    , appRedisPool   :: R.Connection -- Our addition
     }
 ```
 
@@ -180,7 +180,7 @@ import Debug.Trace
 
 
 let redisConf = appRedisConf appSettings
-traceShowM $ "Redis Pool is: " ++ show redisConf
+traceShowM $ "Redis Conf is: " ++ show redisConf
 appRedisPool <- R.connect redisConf
 ```
 
