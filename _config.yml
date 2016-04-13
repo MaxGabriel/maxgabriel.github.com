@@ -2,7 +2,6 @@ title: Max Tagher
 description: "Personal blog of Max Tagher"
 permalink: /:title/
 lsi: false
-markdown: redcarpet
 
 author :
   name : Max Tagher
